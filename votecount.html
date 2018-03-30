@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Instagram Vote Counter</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    body {
+      font-family: "Roboto", sans-serif;
+      color: #333;
+      padding: 0;
+      margin-left: 1%;
+    }
+
+    textarea {
+      font-family: "Roboto", sans-serif;
+      padding: 8px
+    }
+
+    span {
+      width: 100%;
+      display: block;
+    }
+
+    button {
+      margin-top: 1%;
+      padding: 8px;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <h1>Instagram Vote Counter</h1>
+  <h2>Enter Votes in Text Area Below</h1>
+  <span style="width:100%;display:block"><textarea name="name" rows="8" cols="80" placeholder="One comment per line..." id="votes"></textarea></span>
+  <button type="button" name="button" onclick="count()">Count Votes</button>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+
+ function count() {
+   var A = 0;
+   var B = 0;
+   var C = 0;
+   var D = 0;
+   var E = 0;
+   var F = 0;
+   var G = 0;
+   var H = 0;
+
+   var calccounts = function(char) {
+     if (char == 'A') {
+       A++
+     }
+     if (char == 'B') {
+       B++
+     }
+     if (char == 'C') {
+       C++
+     }
+     if (char == 'D') {
+       D++
+     }
+     if (char == 'E') {
+       E++
+     }
+     if (char == 'F') {
+       F++
+     }
+     if (char == 'G') {
+       G++
+     }
+     if (char == 'A') {
+       H++
+     }
+   }
+
+   var lines = $('textarea').val().split('\n');
+   var characters = ['A','B','C','D','E','F','G','H'];
+
+  for (var i = 0; i < lines.length; i++) {
+    inner:
+    for (var j = 0; j < characters.length; j++) {
+      if (lines[i].indexOf(characters[j]) > -1) {
+        calccounts(characters[j]);
+        break inner;
+      }
+    }
+
+  }
+
+  alert('A: '+A);
+
+ }
+
+</script>
+
+</body>
+
+</html>
