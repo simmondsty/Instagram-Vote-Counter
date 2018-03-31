@@ -122,6 +122,38 @@ loop3:
     }
   }
 
+  var highest = A;
+  var hstr = 'A';
+
+  if (highest < B) {
+    highest = B
+    hstr = 'B'
+  }
+  if (highest < C) {
+    highest = C
+    hstr = 'C'
+  }
+  if (highest < D) {
+    highest = D
+    hstr = 'D'
+  }
+  if (highest < E) {
+    highest = E
+    hstr = 'E'
+  }
+  if (highest < F) {
+    highest = F
+    hstr = 'F'
+  }
+  if (highest < G) {
+    highest = G
+    hstr = 'G'
+  }
+  if (highest < H) {
+    highest = H
+    hstr = 'H'
+  }
+
   $('#msg').empty();
   $('#msg').append('A: '+A+'<br>');
   $('#msg').append('B: '+B+'<br>');
@@ -130,8 +162,9 @@ loop3:
   $('#msg').append('E: '+E+'<br>');
   $('#msg').append('F: '+F+'<br>');
   $('#msg').append('G: '+G+'<br>');
-  $('#msg').append('H: '+H+'<br>');
-  $('#msg').append('H: '+H+'<br>');
+  $('#msg').append('H: '+H+'<br><br>');
+  $('#msg').append(votecount+' votes were ignored due to multiple user votes. <br><br>');
+  $('#msg').append('Winner is <strong>'+hstr+'</strong> with <strong>'+highest+'</strong> votes.<br>');
 
  }
 
