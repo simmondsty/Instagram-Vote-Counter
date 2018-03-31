@@ -38,6 +38,7 @@
   <h2>Enter Votes in Text Area Below</h1>
   <span style="width:100%;display:block"><textarea name="name" rows="8" cols="80" placeholder="One comment per line..." id="votes"></textarea></span>
   <button type="button" name="button" onclick="count()">Count Votes</button>
+  <p id="msg"></p>
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -76,26 +77,61 @@
      if (char == 'G') {
        G++
      }
-     if (char == 'A') {
+     if (char == 'H') {
        H++
      }
    }
 
    var lines = $('textarea').val().split('\n');
    var characters = ['A','B','C','D','E','F','G','H'];
+   var letters = 0;
+   var str = '';
+   var substr = '';
+   var voters = [];
+   var voted = false;
+   var votecount = 0;
 
+loop1:
   for (var i = 0; i < lines.length; i++) {
-    inner:
-    for (var j = 0; j < characters.length; j++) {
-      if (lines[i].indexOf(characters[j]) > -1) {
-        calccounts(characters[j]);
-        break inner;
-      }
-    }
+    letters = lines[i].length;
+    voted = false;
+    str = lines[i];
+loop2:
+      for (var k = 0; k < letters; k++) {
+loop3:
+        for (var j = 0; j < characters.length; j++) {
+        if (characters[j] == str.charAt(k)) {
 
+          substr = str.slice(0, k);
+          for (var l = 0; l < voters.length; l++) {
+            if (voters[l] == substr) {
+              voted = true;
+              votecount++;
+            }
+          }
+          if (voted == false) {
+            calccounts(characters[j]);
+            if (substr.length > 0) {
+              voters.push(substr);
+            }
+          }
+          break loop2;
+        }
+      }
+
+    }
   }
 
-  alert('A: '+A);
+  $('#msg').empty();
+  $('#msg').append('A: '+A+'<br>');
+  $('#msg').append('B: '+B+'<br>');
+  $('#msg').append('C: '+C+'<br>');
+  $('#msg').append('D: '+D+'<br>');
+  $('#msg').append('E: '+E+'<br>');
+  $('#msg').append('F: '+F+'<br>');
+  $('#msg').append('G: '+G+'<br>');
+  $('#msg').append('H: '+H+'<br>');
+  $('#msg').append('H: '+H+'<br>');
 
  }
 
